@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Local build and IDE files
+.vscode/
+.idea/
+*.log
+
+# Backup files
+*.bak
+*.orig.bak
