@@ -1,0 +1,32 @@
+﻿trigger:
+  branches:
+    include:
+      - main
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+
+- task: NodeTool@0
+  displayName: Install Node.js
+  inputs:
+    versionSpec: '20.x'
+
+- script: npm ci
+  displayName: Install React Dependencies
+
+- script: npm run build
+  displayName: Build React Application
+
+- task: AzureStaticWebApp@0
+  displayName: Deploy React to Azure Static Web Apps
+  inputs:
+    azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN)
+    app_location: '$(System.DefaultWorkingDirectory)/build'
+    api_location: ''
+    output_location: ''
+    skip_app_build: true
