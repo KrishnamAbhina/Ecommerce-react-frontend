@@ -1,4 +1,4 @@
-trigger:
+﻿trigger:
   branches:
     include:
       - main
@@ -26,7 +26,7 @@ steps:
   displayName: Deploy React to Azure Static Web Apps
   inputs:
     azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN)
-    app_location: '$(System.DefaultWorkingDirectory)/build'
+    app_location: 'build'
     api_location: ''
     output_location: ''
     skip_app_build: true
